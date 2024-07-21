@@ -1,0 +1,8 @@
+flask
+python-dotenv
+openai
+codecov
+pytest
+black
+isort
+autopep8
