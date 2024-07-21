@@ -7,3 +7,4 @@ black
 isort
 autopep8
 pytest-cov
+langchain
