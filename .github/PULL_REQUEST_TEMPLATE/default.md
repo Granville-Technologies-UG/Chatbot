@@ -27,15 +27,6 @@ Please describe the tests that you ran to verify your changes. Provide instructi
 - [ ] Test A
 - [ ] Test B
 
-**Test Configuration**:
-
-- Operating System:
-- Python Version:
-- Dependencies:
-- CI Tool:
-- Database:
-- Other Tools:
-
 ## Checklist:
 
 - [ ] My code follows the style guidelines of this project
