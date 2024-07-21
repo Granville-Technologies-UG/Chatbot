@@ -3,7 +3,6 @@ python-dotenv
 openai
 codecov
 pytest
-pytest-cov
 black
 isort
 autopep8
