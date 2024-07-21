@@ -1,8 +1,8 @@
-## Git Workflows
+### Git Workflows
 
 Our project uses a structured Git workflow to ensure code quality, efficient collaboration, and smooth deployment processes. Below is an overview of our branching strategy and the purpose of each branch.
 
-### Branching Strategy
+#### Branching Strategy
 
 1. **production**
 
@@ -35,7 +35,7 @@ Our project uses a structured Git workflow to ensure code quality, efficient col
    - **Testing**: The quality assurance branch where extensive testing is performed before code moves to `staging`.
    - **Merging**: Code from `main` is merged into `qa` for testing, and once it passes, it is promoted to `staging`.
 
-### Workflow Overview
+#### Workflow Overview
 
 1. **Feature Development**
 
@@ -60,7 +60,7 @@ Our project uses a structured Git workflow to ensure code quality, efficient col
    - Each deployment is tagged with a version number for tracking.
    - Hotfixes are managed by creating branches directly off `production` and merging back after fixes.
 
-### Hotfix Workflow
+#### Hotfix Workflow
 
 1. Create a hotfix branch from `production`:
    ```bash
