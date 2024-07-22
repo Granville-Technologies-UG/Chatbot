@@ -1,0 +1,23 @@
+[tool.poetry]
+name = "bot"
+version = "0.0.0"
+description = "Bot Utilising OpenAI's API"
+authors = ["Your Name <you@example.com>"]
+license = "MIT"
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.10"
+openai = "^1.37.0"
+pytest = "^8.3.1"
+pytest-cov = "^5.0.0"
+Flask = "^3.0.3"
+python-dotenv = "^1.0.1"
+black = "^24.4.2"
+isort = "^5.13.2"
+autopep8 = "^2.3.1"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
