@@ -1,0 +1,33 @@
+name: Test WorkFlow
+
+on:
+  pull_request:
+    branches: [main]
+
+jobs:
+  build-dev-test:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: ['3.8', '3.9', '3.10', '3.11', '3.12']
+    steps:
+      - name: 🛎️ Checkout
+        uses: actions/checkout@v4
+
+      - name: 🐍 Set up Python ${{ matrix.python-version }}
+        uses: actions/setup-python@v4
+        with:
+          python-version: ${{ matrix.python-version }}
+          check-latest: true
+
+      - name: 📦 Install Poetry
+        run: |
+          curl -sSL https://install.python-poetry.org | python3 -
+          export PATH="$HOME/.local/bin:$PATH"
+
+      - name: 📦 Install dependencies
+        run: |
+          poetry install --no-interaction --no-root
+
+      - name: 🧪 Test
+        run: poetry run pytest ./tests
