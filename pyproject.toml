@@ -16,6 +16,40 @@ python-dotenv = "^1.0.1"
 black = "^24.4.2"
 isort = "^5.13.2"
 autopep8 = "^2.3.1"
+flake8 = "^7.1.0"
+
+[tool.black]
+line-length = 88
+target-version = ['py310']
+include = '\.pyi?$'
+exclude = '''
+/(
+    \.eggs
+  | \.git
+  | \.hg
+  | \.mypy_cache
+  | \.tox
+  | \.venv
+  | _build
+  | buck-out
+  | build
+  | dist
+)/
+'''
+
+[tool.flake8]
+max-line-length = 88
+extend-ignore = [
+    'E203',  # Whitespace before ':'
+    'W503',  # Line break before binary operator
+]
+exclude = [
+    '.git',
+    '__pycache__',
+    'build',
+    'dist',
+    '.venv',
+]
 
 
 [build-system]
