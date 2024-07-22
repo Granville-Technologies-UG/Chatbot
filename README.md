@@ -1,5 +1,22 @@
-
 [![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
+
+### How to Install.
+
+```bash
+# Create Conda Environment
+conda create -n bot python=3.10
+conda activate bot
+
+# Install Poetry (if not already installed)
+curl -sSL https://install.python-poetry.org | python3 -
+
+# Configure Poetry to Use Conda Environment
+poetry config virtualenvs.create false
+
+# Install Poetry Dependencies
+poetry install
+
+```
 
 ### Git Workflows
 
