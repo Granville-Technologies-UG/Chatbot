@@ -17,7 +17,7 @@ Our project uses a structured Git workflow to ensure code quality, efficient col
 
    - **Purpose**: A pre-production environment that mirrors our production environment. Used for final testing before production deployment.
    - **Blue/Green Deployment**: Two identical environments (blue and green) where one is live (production) and the other is idle (staging). After successful testing, we can swap staging with production.
-   - **Merging**: Code from the `qa` branch is merged here after passing all tests.
+   - **Merging**: Code from the `main` branch is merged here after passing all tests.
 
 3. **main**
 
@@ -33,11 +33,6 @@ Our project uses a structured Git workflow to ensure code quality, efficient col
    # create a pull request for code review
    ```
 
-4. **qa**
-   - **Purpose**: The quality assurance branch where extensive testing is performed before code moves to `staging`.
-   - **Testing**: The quality assurance branch where extensive testing is performed before code moves to `staging`.
-   - **Merging**: Code from `main` is merged into `qa` for testing, and once it passes, it is promoted to `staging`.
-
 #### Workflow Overview
 
 1. **Feature Development**
@@ -48,13 +43,13 @@ Our project uses a structured Git workflow to ensure code quality, efficient col
 
 2. **QA Testing**
 
-   - After merging feature branches into `main`, the `main` branch is merged into `qa`.
-   - The `qa` branch undergoes rigorous testing.
-   - Any issues found in `qa` are fixed in new branches off `main` or directly in `qa` if necessary.
+   - After merging feature branches into `main`, the `main` branch is merged into `staging`.
+   - The `staging` branch undergoes rigorous testing.
+   - Any issues found in `staging` are fixed in new branches off `main` or directly in `staging` if necessary.
 
 3. **Staging Deployment**
 
-   - Once all tests pass in qa, the qa branch is merged into `staging`.
+   - Once all tests pass in staging, the `staging` branch is merged into `production`.
    - The staging environment is a replica of production, allowing for final validation.
    - If staging tests are successful, the staging branch is prepared for production deployment.
 
