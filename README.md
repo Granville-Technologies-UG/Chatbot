@@ -31,6 +31,26 @@ poetry install
 
 ```
 
+### Adding New Dependencies
+
+To add new dependencies to the project, run the following command:
+
+```bash
+poetry add <dependency-name>
+```
+
+### Run flake8
+
+```bash
+poetry run flake8
+```
+
+### Run black
+
+```bash
+poetry run black .
+```
+
 ### Git Workflows
 
 Our project uses a structured Git workflow to ensure code quality, efficient collaboration, and smooth deployment processes. Below is an overview of our branching strategy and the purpose of each branch.
