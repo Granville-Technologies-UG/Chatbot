@@ -2,9 +2,8 @@ codecov:
   bot:
     username: 'codecov'
     email: 'bot@codecov.io'
-
   notify:
-    require_ci_to_pass: yes
+    require_ci_to_pass: true
     after_n_builds: 2
 
 coverage:
@@ -22,10 +21,10 @@ coverage:
 parsers:
   gcov:
     branch_detection:
-      conditional: yes
-      loop: yes
-      method: yes
-      macro: no
+      conditional: true
+      loop: true
+      method: true
+      macro: false
 
 comment:
   layout: 'reach, diff, flags, files, footer'
