@@ -2,7 +2,20 @@
 
 ### How to Install.
 
+Fork the repository `https://github.com/Granville-Technologies-UG/Chatbot`
+
+Clone the forked repository
+
 ```bash
+git clone https://github.com/<account-username>/Chatbot
+```
+
+Install the dependencies
+
+```bash
+# Navigate to Cloned Repository
+cd Chatbot
+
 # Create Conda Environment
 conda create -n bot python=3.10
 conda activate bot
