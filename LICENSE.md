@@ -35,7 +35,7 @@ This Proprietary License Agreement ("Agreement") is made between GRANVILLE TECHN
    Licensee agrees to indemnify, defend, and hold harmless Licensor from and against any and all claims, damages, losses, liabilities, costs, and expenses (including reasonable attorneys' fees) arising out of or in connection with Licensee's use of the Software, breach of this Agreement, or violation of any rights of a third party.
 
 9. Governing Law
-   This Agreement shall be governed by and construed in accordance with the laws of [Your Country/State], without regard to its conflict of law principles. Any legal action or proceeding arising under this Agreement will be brought exclusively in the federal or state courts located in [Your Country/State], and the parties hereby irrevocably consent to the personal jurisdiction and venue therein.
+   This Agreement shall be governed by and construed in accordance with the laws of Uganda, without regard to its conflict of law principles. Any legal action or proceeding arising under this Agreement will be brought exclusively in the federal or state courts located in Uganda, and the parties hereby irrevocably consent to the personal jurisdiction and venue therein.
 
 10. Entire Agreement
     This Agreement constitutes the entire agreement between the parties with respect to the subject matter hereof and supersedes all prior and contemporaneous agreements, representations, and understandings. No amendment or modification of this Agreement will be binding unless in writing and signed by both parties.
