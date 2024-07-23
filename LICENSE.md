@@ -1,6 +1,6 @@
 Proprietary License Agreement
 
-Effective Date: 22/07/2024
+Effective Date: 22-07-2024
 
 This Proprietary License Agreement ("Agreement") is made between GRANVILLE TECHNOLOGIES LTD, with an address at GEORGE COURTS, HANNINGTON RD, KAMPALA ("Licensor"), and any individual or entity ("Licensee") obtaining a copy of this software and associated documentation files (the "Software").
 
@@ -49,5 +49,3 @@ This Proprietary License Agreement ("Agreement") is made between GRANVILLE TECHN
 IN WITNESS WHEREOF, the parties hereto have executed this Proprietary License Agreement as of the Effective Date.
 
 GRANVILLE TECHNOLOGIES LTD
-
-+256 761954410
