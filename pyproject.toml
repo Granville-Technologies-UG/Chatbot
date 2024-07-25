@@ -3,7 +3,7 @@ name = "bot"
 version = "0.0.0"
 description = "Bot Utilising OpenAI's API"
 authors = ["Your Name <you@example.com>"]
-license = "MIT"
+license = "PROPRIETARY"
 readme = "README.md"
 
 [tool.poetry.dependencies]
