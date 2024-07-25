@@ -3,7 +3,7 @@ import os
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 
 from openai import OpenAI
-from utils.pdf import PDF
+from utilities.pdf import PDF
 import shelve
 import time
 import logging
