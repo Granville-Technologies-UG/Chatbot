@@ -8,5 +8,4 @@ def create_bot():
     load_configurations(bot)
     configure_logging()
     bot.register_blueprint(webhook_blueprint)
-
     return bot

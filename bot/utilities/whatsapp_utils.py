@@ -1,6 +1,7 @@
 import sys
 import os
-sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
+
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
 import json
 import requests
 from services.openai_service import generate_response
@@ -20,37 +21,38 @@ def transcript_audio(media_id):
             f"https://graph.facebook.com/v19.0/{media_id}?access_token={token}"
         )
         media_response.raise_for_status()
-        media_url = media_response.json()['url']
+        media_url = media_response.json()["url"]
         # Download the audio file
         file_response = requests.get(
-            media_url,
-            headers={'Authorization': f"Bearer {token}"},
-            stream=True
+            media_url, headers={"Authorization": f"Bearer {token}"}, stream=True
         )
         file_response.raise_for_status()
         # Prepare the file for transcription
         multipart_data = MultipartEncoder(
             fields={
-                'file': ('grabacion.ogg', file_response.content, 'audio/ogg'),
-                'model': ('model', 'whisper-1')
+                "file": ("grabacion.ogg", file_response.content, "audio/ogg"),
+                "model": ("model", "whisper-1"),
             }
         )
         # Send the file for transcription
         openai_response = requests.post(
             "https://api.openai.com/v1/audio/transcriptions",
             headers={
-                'Authorization': f"Bearer {os.getenv('OPENAI_TOKEN')}",
-                'Content-Type': multipart_data.content_type
+                "Authorization": f"Bearer {os.getenv('OPENAI_TOKEN')}",
+                "Content-Type": multipart_data.content_type,
             },
-            data=multipart_data
+            data=multipart_data,
         )
         openai_response.raise_for_status()
-        return openai_response.json()['text']
+        return openai_response.json()["text"]
     except requests.exceptions.RequestException as e:
         print(f"An error occurred: {e}")
         raise
 
-def upload_whatsapp_media(phone_number_id: str, file_path: str, file_type: str, access_token: str) -> str:
+
+def upload_whatsapp_media(
+    phone_number_id: str, file_path: str, file_type: str, access_token: str
+) -> str:
     """
     Uploads media to WhatsApp using Meta's WhatsApp Cloud API.
 
@@ -65,27 +67,28 @@ def upload_whatsapp_media(phone_number_id: str, file_path: str, file_type: str, 
     """
 
     url = f"https://graph.facebook.com/{current_app.config['VERSION']}/{current_app.config['PHONE_NUMBER_ID']}/media"
-    
+
     files = {
-        'file': ('file', open(file_path, 'rb')),
-        'type': (None, file_type),
-        'messaging_product': (None, 'whatsapp')
-    }
-    
-    headers = {
-        'Authorization': f'Bearer {access_token}'
+        "file": ("file", open(file_path, "rb")),
+        "type": (None, file_type),
+        "messaging_product": (None, "whatsapp"),
     }
 
+    headers = {"Authorization": f"Bearer {access_token}"}
+
     response = requests.post(url, headers=headers, files=files)
-    
+
     if response.status_code == 200:
         media_id = response.json().get("id")
         return media_id
     else:
         raise Exception(f"Error uploading media: {response.text}")
 
+
 # TODO: Find out why the image isn't received even after a successful POST request.
-def send_whatsapp_image(recipient_number: str, image_link: str, image_caption: str, access_token: str) -> str:
+def send_whatsapp_image(
+    recipient_number: str, image_link: str, image_caption: str, access_token: str
+) -> str:
     """
     Sends an image to a specified WhatsApp number using Meta's WhatsApp Cloud API.
 
@@ -100,29 +103,34 @@ def send_whatsapp_image(recipient_number: str, image_link: str, image_caption: s
     """
 
     url = f"https://graph.facebook.com/{current_app.config['VERSION']}/{current_app.config['PHONE_NUMBER_ID']}/messages"
-    
-    payload = json.dumps({
-        "messaging_product": "whatsapp",
-        "recipient_type": "individual",
-        "to": recipient_number,
-        "type": "image",
-        "image": {
-            "link": image_link,
-            "caption": image_caption
+
+    payload = json.dumps(
+        {
+            "messaging_product": "whatsapp",
+            "recipient_type": "individual",
+            "to": recipient_number,
+            "type": "image",
+            "image": {"link": image_link, "caption": image_caption},
         }
-    })
-    
+    )
+
     headers = {
-        'Authorization': f'Bearer {access_token}',
-        'Content-Type': 'application/json'
+        "Authorization": f"Bearer {access_token}",
+        "Content-Type": "application/json",
     }
 
     response = requests.request("POST", url, headers=headers, data=payload)
-    
+
     return response.text
 
 
-def send_whatsapp_document(recipient_number: str, document_link: str, document_caption: str, document_filename: str, access_token: str) -> str:
+def send_whatsapp_document(
+    recipient_number: str,
+    document_link: str,
+    document_caption: str,
+    document_filename: str,
+    access_token: str,
+) -> str:
     """
     Sends a document to a specified WhatsApp number using Meta's WhatsApp Cloud API.
 
@@ -138,27 +146,30 @@ def send_whatsapp_document(recipient_number: str, document_link: str, document_c
     """
 
     url = f"https://graph.facebook.com/{current_app.config['VERSION']}/{current_app.config['PHONE_NUMBER_ID']}/messages"
-    
-    payload = json.dumps({
-        "messaging_product": "whatsapp",
-        "recipient_type": "individual",
-        "to": recipient_number,
-        "type": "document",
-        "document": {
-            "link": document_link,
-            "caption": document_caption,
-            "filename": document_filename
+
+    payload = json.dumps(
+        {
+            "messaging_product": "whatsapp",
+            "recipient_type": "individual",
+            "to": recipient_number,
+            "type": "document",
+            "document": {
+                "link": document_link,
+                "caption": document_caption,
+                "filename": document_filename,
+            },
         }
-    })
-    
+    )
+
     headers = {
-        'Authorization': f'Bearer {access_token}',
-        'Content-Type': 'application/json'
+        "Authorization": f"Bearer {access_token}",
+        "Content-Type": "application/json",
     }
 
     response = requests.request("POST", url, headers=headers, data=payload)
-    
+
     return response.text
+
 
 def log_http_response(response):
     logging.info(f"Status: {response.status_code}")
@@ -187,16 +198,12 @@ def send_message(data):
     url = f"https://graph.facebook.com/{current_app.config['VERSION']}/{current_app.config['PHONE_NUMBER_ID']}/messages"
 
     try:
-        response = requests.post(
-            url, data=data, headers=headers, timeout=10
-        ) 
-        response.raise_for_status() 
+        response = requests.post(url, data=data, headers=headers, timeout=10)
+        response.raise_for_status()
     except requests.Timeout:
         logging.error("Timeout occurred while sending message")
         return jsonify({"status": "error", "message": "Request timed out"}), 408
-    except (
-        requests.RequestException
-    ) as e:
+    except requests.RequestException as e:
         logging.error(f"Request failed due to: {e}")
         return jsonify({"status": "error", "message": "Failed to send message"}), 500
     else:
@@ -239,4 +246,3 @@ def is_valid_whatsapp_message(body):
         and body["entry"][0]["changes"][0]["value"].get("messages")
         and body["entry"][0]["changes"][0]["value"]["messages"][0]
     )
-
